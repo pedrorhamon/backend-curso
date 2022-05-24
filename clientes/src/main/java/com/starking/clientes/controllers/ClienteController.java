@@ -3,6 +3,7 @@ package com.starking.clientes.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,5 +32,11 @@ public class ClienteController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente salvar(@RequestBody @Validated Cliente cliente) {
 		return this.clienteService.salvar(cliente);
+	}
+	
+	@DeleteMapping
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deletar(@PathVariable Long id) {
+		this.clienteService.deletar(id);
 	}
 }

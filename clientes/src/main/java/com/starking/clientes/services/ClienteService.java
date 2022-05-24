@@ -27,4 +27,9 @@ public class ClienteService {
 	public Cliente salvar(Cliente cliente) {
 		return this.clienteRepository.save(cliente);
 	}
+	
+	@Transactional
+	public void deletar(Long id) {
+		this.clienteRepository.deleteById(id);
+	}
 }

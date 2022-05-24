@@ -34,9 +34,9 @@ public class ClienteController {
 		return this.clienteService.salvar(cliente);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deletar(@PathVariable Long id) {
+	public void deletar(@PathVariable("id") Long id) {
 		this.clienteService.deletar(id);
 	}
 }

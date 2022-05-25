@@ -1,10 +1,10 @@
 package com.starking.clientes.services;
 
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.starking.clientes.model.entities.Cliente;
 import com.starking.clientes.repositories.ClienteRepository;
@@ -31,5 +31,16 @@ public class ClienteService {
 	@Transactional
 	public void deletar(Long id) {
 		this.clienteRepository.deleteById(id);
+	}
+	
+	
+	@Transactional
+	public void atualizar(Long id, Cliente cliente) {
+		this.clienteRepository.findById(id)
+		.map(clienteAtualizado -> {
+			clienteAtualizado.setId(cliente.getId());
+			return this.clienteRepository.save(clienteAtualizado);
+		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"Cliente não encontrado"));
 	}
 }

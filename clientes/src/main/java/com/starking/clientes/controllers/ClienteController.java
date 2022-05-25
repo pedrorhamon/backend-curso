@@ -43,7 +43,7 @@ public class ClienteController {
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
+	public void atualizar(@PathVariable Long id, @RequestBody @Validated Cliente cliente) {
 			this.clienteService.atualizar(id, cliente);
 	}
 }

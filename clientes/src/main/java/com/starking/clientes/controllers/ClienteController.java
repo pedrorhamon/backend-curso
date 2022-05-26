@@ -1,5 +1,7 @@
 package com.starking.clientes.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -31,7 +33,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente salvar(@RequestBody @Validated Cliente cliente) {
+	public Cliente salvar(@RequestBody @Valid Cliente cliente) {
 		return this.clienteService.salvar(cliente);
 	}
 	
@@ -43,7 +45,7 @@ public class ClienteController {
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void atualizar(@PathVariable Long id, @RequestBody @Validated Cliente cliente) {
+	public void atualizar(@PathVariable Long id, @RequestBody @Valid Cliente cliente) {
 			this.clienteService.atualizar(id, cliente);
 	}
 }

@@ -27,7 +27,7 @@ public class ServicoController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<Servico> buscar(
-			@RequestParam(value = "nome", required = false) String nome,
+			@RequestParam(value = "nome", required = false, defaultValue = "") String nome,
 			@RequestParam(value = "mes", required = false) Integer mes) {
 		return this.servicoService.buscar(nome, mes);
 	}

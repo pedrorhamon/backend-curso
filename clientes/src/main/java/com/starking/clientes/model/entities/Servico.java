@@ -1,8 +1,21 @@
 package com.starking.clientes.model.entities;
 
 import java.math.BigDecimal;
-import javax.persistence.*;
-import lombok.*;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
@@ -26,5 +39,7 @@ public class Servico {
 	
 	@Column
 	private BigDecimal valor;
-
+	
+	@Column
+	private LocalDate data;
 }

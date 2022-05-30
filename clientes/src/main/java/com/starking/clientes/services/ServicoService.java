@@ -2,6 +2,7 @@ package com.starking.clientes.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -25,6 +26,10 @@ public class ServicoService {
 	private final ServicoRepository servicoRepository;
 	private final ClienteRepository clienteRepository;
 	private final BigDecimalConverter bigDecimalConverte;
+	
+	public List<Servico> buscar(String nome, Integer mes) {
+		return this.servicoRepository.findByNomeClienteAndMes("%" + nome + "%", mes);
+	}
 	
 	@Transactional
 	public Servico salvar(ServicoDTO servicoDTO) {

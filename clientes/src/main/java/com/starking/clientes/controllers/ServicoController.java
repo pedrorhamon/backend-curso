@@ -1,4 +1,4 @@
-package com.starking.clientes.model.controllers;
+package com.starking.clientes.controllers;
 
 import java.util.List;
 
